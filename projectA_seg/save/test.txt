@@ -1,0 +1,4 @@
+test acc: 0.875 m_prec: 0.923 m_rec: 0.632 m_f1: 0.750 b_prec: 0.863 b_rec: 0.978 b_f1: 0.917 model 1_u
+test acc: 0.953 m_prec: 0.900 m_rec: 0.947 m_f1: 0.923 b_prec: 0.977 b_rec: 0.956 b_f1: 0.966 model 1_eu
+test acc: 0.828 m_prec: 0.833 m_rec: 0.526 m_f1: 0.645 b_prec: 0.827 b_rec: 0.956 b_f1: 0.887 model 2_u
+test acc: 0.953 m_prec: 0.900 m_rec: 0.947 m_f1: 0.923 b_prec: 0.977 b_rec: 0.956 b_f1: 0.966 model 2_eu
