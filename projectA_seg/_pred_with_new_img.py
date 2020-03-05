@@ -61,7 +61,7 @@ def main(NetClass, key_name):
         plt.imsave(out_im_path, out_im, cmap=plt.cm.jet)
 
         # 输出详细信息
-        cls_map = net_out.argmax(dim=3)
+        cls_map = net_out.argmax(dim=1)
         bg_pixel_num = (cls_map == dataset_reader.DatasetReader.class2id['bg']).sum().item()
         benign_pixel_num = (cls_map == dataset_reader.DatasetReader.class2id['benign']).sum().item()
         malignant_pixel_num = (cls_map == dataset_reader.DatasetReader.class2id['malignant']).sum().item()
