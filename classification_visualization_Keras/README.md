@@ -67,4 +67,4 @@ python ExtraFea_method.py
 python grad_cam_plot.py
 
 ```
-该脚本用于调用elastic/Ultrasonic模型的max_pooling2d_4/max_pooling2d_2层进行梯度可视化
+该脚本用于调用elastic/Ultrasonic模型的max_pooling2d_4/max_pooling2d_2层热热力图的方式进行梯度可视化
