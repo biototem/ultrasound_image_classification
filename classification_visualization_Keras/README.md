@@ -1,5 +1,5 @@
 # 基于Keras的ELASTIC/ULTRASONIC分类模型的特征提取及梯度可视化程序
-本程序针对BENIGN和MALIGNANT的B超图像,实现从采样→训练→特征提取→梯度可视化的真个过程的功能。
+本程序针对BENIGN和MALIGNANT的B超图像,实现从采样→训练→特征提取→梯度可视化的整个过程的功能。
 
 
 ##  requirements
