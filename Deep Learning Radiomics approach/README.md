@@ -1,5 +1,5 @@
-# 基于Keras的ELASTIC/ULTRASONIC分类模型的特征提取及梯度可视化程序
-本程序针对BENIGN和MALIGNANT的B超图像,实现从采样→训练→特征提取→梯度可视化的整个过程的功能。
+# feature extraction from B mode and SWE ultrasound images of breast cancer patients
+The programs includes image sampling->training->feature extraction->gradinet visualization
 
 
 ##  requirements
@@ -19,30 +19,32 @@
 #### [DEFAULT]
 
 
-**GPU_USE**是运行项目代码时，所指定占用的GPU，如指定使用第0张，可以设置为GPU_USE = 0。
+**GPU_USE** default GPU_USE = 0。
 
-**ULTRASONIC_CHECKPOINT_PATH**是ULTRASONIC模型训练的checkpoint保存路径,TrainModel和ExtraFea脚本会用到
+**ULTRASONIC_CHECKPOINT_PATH** B mode ultrasound model checkpoint saved path, used in TrainModel and ExtraFea scripts
 
-**ULTRASONIC_MODEL_NAME**是ULTRASONIC模型保存的文件名
+**ULTRASONIC_MODEL_NAME**  B mode ultraosound model checkpoint name
 
-**ELASTIC_CHECKPOINT_PATH**是ELASTIC模型训练的checkpoint保存路径,TrainModel和ExtraFea脚本会用到
+**ELASTIC_CHECKPOINT_PATH** SWE ultrasound model checkpoint saved path, used in TrainModel and ExtraFea scripts
 
-**ELASTIC_MODEL_NAME**是ELASTIC模型保存的文件名
+**ELASTIC_MODEL_NAME** SWE ultraosound model checkpoint name
 
-**IMG_SOURCE_DIR** 原图像主目录,grad_cam_plot和RGBcrop脚本会用到
+**IMG_SOURCE_DIR** image path, used in grad_cam_plot and RGBcrop scripts
 
-**BENIGN_SAMPLE_ROOT_DIR** BENIGN图像采样后的图像保存路径,RGBcrop脚本会用到
+**BENIGN_SAMPLE_ROOT_DIR** saved path of patches sampled from BENIGN images, used in RGBcrop script
 
-**MALIGNANT_SAMPLE_ROOT_DIR** MALIGNANT图像采样后的图像保存路径,RGBcrop脚本会用到
+**MALIGNANT_SAMPLE_ROOT_DIR** aved path of patches sampled from MALIGNANT images, used in RGBcrop script 
 
 ## Run
-上述sys.ini文件配置好之后,分别执行脚本就可以运行程序,不需要传入任何参数。**util_script.py**脚本封装了keras上建立模型和get_callback方法,不需要单独执行
+After the above sys.ini file is configured, you can run the program by executing the scripts separately without passing in any parameters. 
+**util_script.py**The callback method does not need to be executed separately.
+
 ### RGBcrop_resize_method
 ```
 python RGBcrop_resize_method.py
 ```
+The script samples from the center of the original ultrasound image and then resize it to 302×430 for the next training.
 
-该脚本能将B超原图以中心区域进行采样再resize成302×430大小,用于进行下一步的训练
 
 ### *TrainModel_RGB_Resize302x430.py
 ```
@@ -51,20 +53,18 @@ python elastic_Ultrasonic_TrainModel_RGB_Resize302x430.py
 python Ultrasonic_TrainModel_RGB_Resize302x430.py
 
 ```
-
-上述两个脚本是分别进行elastic和Ultrasonic的训练
+model training
 
 ### ExtraFea_method.py
 ```
 python ExtraFea_method.py
 
 ```
-
-该脚本用于调用elastic/Ultrasonic模型生成图像特征
+feature extraction
 
 ### grad_cam_plot.py
 ```
 python grad_cam_plot.py
 
 ```
-该脚本用于调用elastic/Ultrasonic模型的max_pooling2d_4/max_pooling2d_2层热热力图的方式进行梯度可视化
+visualization heatmap from max_pooling2d_4/max_pooling2d_2 layers
