@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# @Licence : bio-totem
 """
 Created on Mon Aug 27 08:38:42 2018
 
-@author: root
+@author: Bohrium.kwong
 """
 
 import os
