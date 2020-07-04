@@ -67,7 +67,7 @@ if __name__ == "__main__":
     num_classes = 2  
     img_rows, img_cols = label_toal[0].shape[0], label_toal[0].shape[1]     # shouble 302x430
     train_X = train_X.reshape(train_X.shape[0], img_rows, img_cols, 3)
-    X_train, X_test, y_train, y_test = train_test_split(train_X, train_Y, test_size=0.1)    #20% for validtion
+    X_train, X_test, y_train, y_test = train_test_split(train_X, train_Y, test_size=0.2)    #20% for validtion
     print ('test data num :'+str(X_test.shape[0]))
     
     
@@ -79,9 +79,16 @@ if __name__ == "__main__":
     y_test  = keras.utils.to_categorical(y_test,num_classes)
     
     
-    train_datagen = ImageDataGenerator()
+    train_datagen = ImageDataGenerator(
+        horizontal_flip = True,
+        vertical_flip = True,
+        zoom_range = 0.2)
     train_gen = train_datagen.flow(X_train, y_train, batch_size=32, shuffle=True, seed=1)   #gene traindata
-    valid_datagen = ImageDataGenerator()
+    
+    valid_datagen = ImageDataGenerator(
+        horizontal_flip = True,
+        vertical_flip = True,
+        zoom_range = 0.2)
     valid_gen = valid_datagen.flow(X_test, y_test, batch_size=32, shuffle=True, seed=1)
     
     model = get_model(input_shape,num_classes)
